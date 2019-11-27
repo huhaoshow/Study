@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>art-template在node.js中的使用</title>
+</head>
+
+<body>
+    <p>姓名:{{name}}</p>
+    <p>age:{{age}}</p>
+    <p>爱好:</p>
+    <ul>
+        {{each hobby value index}}
+        <li>{{value}}</li>
+        {{/each}}
+    </ul>
+</body>
+
+</html>

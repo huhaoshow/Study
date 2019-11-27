@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/submit" method="get" id="form">
+        用户名： <input type="text" name="userName"> <br><br>
+        密　码： <input type="text" name="userPwd"><br><br>
+        <!-- <input type="submit"> -->
+        <input type="button" value="注册" id="btn">
+        <div id="tips"></div>
+    </form>
+      
+  <!-- 引入jQuery   -->
+  <script src="../js/jquery-1.12.2.js"></script>
+
+
+
+  <script>
+    $(function() {
+        //获取按钮，注册点击事件
+        let btn = $('#btn');
+
+        btn.on('click',function() {
+            //获取到用户的数据
+            let userData = $('#form').serialize();
+
+            //发送ajax请求
+            $.ajax({
+                type: 'get',
+                url: '/userRegister',
+                data: userData,
+                success: function(res) {
+                //    console.log(res.code);
+                    let obj = JSON.parse(res);
+                    // console.log(obj.code);
+                    if(obj.code == 200) {
+                        $('#tips').text(obj.msg);
+                    }
+                }
+            })
+        })
+
+
+
+
+    })
+  
+  </script>
+</body>
+</html>
