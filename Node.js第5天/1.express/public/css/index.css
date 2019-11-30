@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    width: 500px;
+    height: 281.25px;
+    margin: 10px;
+    /* border: 1px solid #ccc; */
+    position: relative;
+}
+
+.big {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 500px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    display: none;
+}
+
+.mask {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 0, 0.4);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    /* 把鼠标指针换成移动图标 */
+    cursor: move;
+    display: none;
+}
+
+.small {
+    position: relative;
+    height: 281.25px;
+    width: 500px;
+}
+
+.active .mask,
+.active .big {
+    display: block;
+}
+
+.big img {
+    position: absolute;
+}

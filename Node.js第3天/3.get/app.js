@@ -14,15 +14,17 @@ app.listen(3000, () => {
 app.on('request', (req, res) => {
     let urlobj = urlModule.parse(req.url, true);
     let method = req.method;
-    let url = urlobj.pathname;
+    let pathname = urlobj.pathname;
     // 加载页面
-    if (method == 'GET' && (url == '/' || url == '/index' || url == '/index.html')) {
+    if (method == 'GET' && (pathname == '/' || pathname == '/index' || pathname == '/index.html')) {
         let indexStr = template(path.join(__dirname, './view/index.html'), {});
         res.end(indexStr);
-    } else if (method == 'GET' && url == '/register.html') {
-        let indexStr = template(path.join(__dirname, './view/register.html'), {});
-        res.end(indexStr);
-    } else if (method == 'GET' && url == '/node_modules/jquery/src/jquery.js') {
+    } else if (method == 'GET' && pathname == '/register.html') {
+        let registerStr = template(path.join(__dirname, './view/register.html'), {});
+        res.end(registerStr);
+    }
+    // 加载jQuery
+    else if (method == 'GET' && pathname == '/node_modules/jquery/src/jquery.js') {
         fs.readFile(path.join(__dirname, './node_modules/jquery/src/jquery.js'), 'utf-8', (err, data) => {
             if (err) return console.log(err.message);
             res.end(data);
