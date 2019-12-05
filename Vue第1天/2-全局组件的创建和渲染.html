@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1.引入vue.js -->
+    <script src="./js/vue.js"></script>
+    <!-- 2.建立模板 -->
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!-- 在Vue指定的范围内,将全局组件当做自定义元素标签来使用,可复用 -->
+        <first></first>
+        <first></first>
+    </div>
+    <!-- template专用的模板标签,并不会被浏览器解析渲染 -->
+    <template id="first">
+        <!-- 在模板中必须且仅能有一个根标签 -->
+        <div>
+            <ul>
+                <h1>这是全局组件的使用</h1>
+                <span>{{name}}是一个{{address}}的{{age}}小女孩</span>
+            </ul>
+        </div>
+    </template>
+    <script>
+        // 4.创建全局组件   该步骤要写在创建实例之前
+        Vue.component('first', {
+            // 配置模板,通过template来指定模板结构
+            template: '#first',
+            // 配置数据,data必须要是一个函数,将数据返回到模板中
+            data() {
+                return {
+                    name: '小糊涂',
+                    age: 18,
+                    address: '江西'
+                }
+            }
+        });
+        // 3.创建vue实例
+        let vm = new Vue({
+            // 配置el
+            el: '#app',
+            // 配置data
+            data: {
+                name: '小糊涂',
+                age: '18',
+                address: '江西'
+            }
+        });
+    </script>
+
+</body>
+
+</html>

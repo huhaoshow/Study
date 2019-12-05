@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 引入Vue.js -->
+    <script src="./js/vue.js"></script>
+    <!-- 添加模板结构 -->
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <second></second>
+    </div>
+    <template id="second">
+        <div>
+            <h2>这是组件使用的重复练习</h2>
+            <span>{{name}}是一个在{{address}}打拼的{{age}}岁小伙子</span>
+        </div>
+    </template>
+    <script>
+        // 创建一个全局组件
+        Vue.component('second', {
+            template: '#second',
+            data() {
+                return {
+                    name: '小海绵',
+                    age: 24,
+                    address: '广州'
+                };
+            }
+        });
+        // 创建Vue实例
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello World'
+            }
+        });
+    </script>
+</body>
+
+</html>
