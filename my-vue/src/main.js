@@ -1,7 +1,5 @@
 import Vue from 'vue'
-// import App from './components/Vue第2天/1.v-on.vue'
-// import App from './components/Vue第2天/2.v-show和v-if.vue'
-import App from './components/Vue第2天/3.案例.vue'
+import App from './components/Vue第3天/1.axios.vue'
 Vue.config.productionTip = false
 
 new Vue({
